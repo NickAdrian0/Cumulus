@@ -1,5 +1,5 @@
-CUMULUS - by N1ckPA /🚢
-	
+CUMULUS - by N1ckPA 
+
 Cumulus é uma camada portátil de orquestração de biblioteca de jogos, criada para unificar jogos de diferentes fontes e manter biblioteca, saves e dados persistentes entre lojas, launchers e computadores em um só lugar.
 
 Cumulus é um projeto open source que integra diferentes ferramentas e projetos independentes de código aberto, incluindo Playnite, rclone, Ludusavi e diversos addons para Playnite.
