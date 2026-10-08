@@ -70,7 +70,7 @@ function Set-LudusaviPortablePaths {
     $savePath = Quote-Yaml (($GameSavesDir -replace "\\", "/"))
     $rclonePath = Quote-Yaml (($RcloneExe -replace "\\", "/"))
     $rcloneConfigPath = ($RcloneConfig -replace "\\", "/")
-    $rcloneArguments = Quote-Yaml ('--fast-list --ignore-checksum --config "' + $rcloneConfigPath + '"')
+    $rcloneArguments = Quote-Yaml ('--fast-list --ignore-checksum --local-no-preallocate --config "' + $rcloneConfigPath + '"')
 
     for ($i = 0; $i -lt $lines.Count; $i++) {
         $line = $lines[$i]
@@ -210,12 +210,13 @@ function Invoke-RcloneCopy {
     }
 
     $arguments = @(
-        "--config", $RcloneConfig,
-        "copy", $Source, $Destination,
-        "--retries", "1",
-        "--low-level-retries", "1",
-        "--contimeout", "5s",
-        "--timeout", "30s"
+    	"--config", $RcloneConfig,
+    	"--local-no-preallocate",
+    	"copy", $Source, $Destination,
+    	"--retries", "1",
+    	"--low-level-retries", "1",
+    	"--contimeout", "5s",
+    	"--timeout", "30s"
     )
 
     & $RcloneExe @arguments *> $null
